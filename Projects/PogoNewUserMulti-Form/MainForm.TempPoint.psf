@@ -2270,7 +2270,7 @@ $buttonCreateAccounts_Click = {
 	{
 		[System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms')
 		[Windows.Forms.MessageBox]::Show('Username or password is incorrect.  Please try again', 'Error', [Windows.Forms.MessageBoxButtons]::OK, [Windows.Forms.MessageBoxIcon]::Information)
-		Return
+		[environment]::exit(0)
 	}
 	
 	## Pull information
@@ -2294,7 +2294,7 @@ $buttonCreateAccounts_Click = {
 	{
 		[System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms')
 		[Windows.Forms.MessageBox]::Show('Username in use.  Please increment and try again', 'Username Test', [Windows.Forms.MessageBoxButtons]::OK, [Windows.Forms.MessageBoxIcon]::Information)
-		Return
+		[environment]::exit(0)
 	}
 	
 	##Check Supervisor
@@ -2303,7 +2303,7 @@ $buttonCreateAccounts_Click = {
 	{
 		[System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms')
 		[Windows.Forms.MessageBox]::Show('Supervisor username not valid.  Please try again.', 'Supervisor Test', [Windows.Forms.MessageBoxButtons]::OK, [Windows.Forms.MessageBoxIcon]::Information)
-		Return
+		[environment]::exit(0)
 	}
 	Else
 	{

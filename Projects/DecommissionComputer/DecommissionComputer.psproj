@@ -1,0 +1,12 @@
+﻿<Project>
+  <Version>2.0</Version>
+  <FileID>d1a10fa5-dc17-4625-beea-d9f7a21a25a9</FileID>
+  <ProjectType>0</ProjectType>
+  <Folders />
+  <Files>
+    <File Build="0">Startup.pss</File>
+    <File Build="0" Shared="True" ReferenceFunction="Invoke-Global_ps1">Globals.ps1</File>
+    <File Build="0" ReferenceFunction="Show-MainForm_psf">MainForm.psf</File>
+    <File Build="1">.gitignore</File>
+  </Files>
+</Project>
