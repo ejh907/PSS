@@ -1841,13 +1841,10 @@ $buttonInitiateJDEStackRebo_Click={
 		[Windows.Forms.MessageBox]::Show('Notification Failure', 'Failure', [Windows.Forms.MessageBoxButtons]::OK, [Windows.Forms.MessageBoxIcon]::Information)
 	}
 	
-	## Restart and check Oracle DB Server and Test Oracle DB Server
+	## Restart and check Oracle DB Server
 	New-EventLog -ComputerName ANCORAP01 -LogName Application -Source 'JD Edwards Powershell' -ErrorAction SilentlyContinue
 	Write-EventLog -ComputerName ANCORAP01 -EventId 1555 -LogName Application -Message $SM -Source 'JD Edwards Powershell'
 	Restart-Computer -ComputerName ANCORAP01
-	New-EventLog -ComputerName ANCORATD01 -LogName Application -Source 'JD Edwards Powershell' -ErrorAction SilentlyContinue
-	Write-EventLog -ComputerName ANCORATD01 -EventId 1555 -LogName Application -Message $SM -Source 'JD Edwards Powershell'
-	Restart-Computer -ComputerName ANCORATD01
 	$statusbar1.Text = 'ANCORAP01 restarted.  Waiting...'
 	Start-Sleep 600
 	Try { Test-Connection ANCORAP01 }
@@ -1870,21 +1867,6 @@ $buttonInitiateJDEStackRebo_Click={
 		Write-Host 'ENTERPRISE SERVER FAILED TO RESTART IN TIME.'
 		BREAK
 	}
-	
-	
-	## Restart and check Single Sign-On server
-	New-EventLog -ComputerName ANCSSOP01 -LogName Application -Source 'JD Edwards Powershell'
-	Write-EventLog -ComputerName ANCSSOP01 -EventId 1555 -LogName Application -Message $SM -Source 'JD Edwards Powershell'
-	Restart-Computer -ComputerName ANCSSOP01
-	$statusbar1.Text = 'ANCENTP01 restarted.  Waiting...'
-	Start-Sleep 600
-	Try { Test-Connection ANCENTP01 }
-	Catch
-	{
-		Write-Host 'ENTERPRISE SERVER FAILED TO RESTART IN TIME.'
-		BREAK
-	}
-	
 	
 	## Restart and check Web servers
 	New-EventLog -ComputerName  ANCWEBP04 -LogName Application -Source 'JD Edwards Powershell'
