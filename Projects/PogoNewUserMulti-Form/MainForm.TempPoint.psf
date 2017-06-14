@@ -1016,7 +1016,7 @@ gg==</Preview>
       <Property name="Location">12, 173</Property>
       <Property name="Name">TextboxEN</Property>
       <Property name="Size">171, 20</Property>
-      <Property name="TabIndex">3</Property>
+      <Property name="TabIndex">39</Property>
     </Object>
     <Object type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="labelEmployeeNumber" children="Controls">
       <Property name="Font">Microsoft Sans Serif, 15pt</Property>
@@ -1048,7 +1048,7 @@ gg==</Preview>
       <Property name="Location">448, 432</Property>
       <Property name="Name">buttonChooseQualtraxGroups</Property>
       <Property name="Size">212, 105</Property>
-      <Property name="TabIndex">14</Property>
+      <Property name="TabIndex">36</Property>
       <Property name="Text">Choose Qualtrax Groups</Property>
       <Property name="UseVisualStyleBackColor">True</Property>
       <Event name="Click">buttonChooseQualtraxGroups_Click</Event>
@@ -1057,7 +1057,7 @@ gg==</Preview>
       <Property name="Location">230, 432</Property>
       <Property name="Name">buttonChooseActiveDirector</Property>
       <Property name="Size">212, 105</Property>
-      <Property name="TabIndex">13</Property>
+      <Property name="TabIndex">12</Property>
       <Property name="Text">Choose Active Directory Groups</Property>
       <Property name="UseVisualStyleBackColor">True</Property>
       <Event name="Click">buttonGroupPicker_Click</Event>
@@ -1071,7 +1071,7 @@ gg==</Preview>
       <Property name="Location">841, 138</Property>
       <Property name="Name">comboboxQualtrax</Property>
       <Property name="Size">209, 21</Property>
-      <Property name="TabIndex">10</Property>
+      <Property name="TabIndex">9</Property>
     </Object>
     <Object type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="labelQualtraxRequired" children="Controls">
       <Property name="Font">Microsoft Sans Serif, 15pt</Property>
@@ -1090,7 +1090,7 @@ gg==</Preview>
       <Property name="Location">841, 219</Property>
       <Property name="Name">comboboxJDE</Property>
       <Property name="Size">209, 21</Property>
-      <Property name="TabIndex">11</Property>
+      <Property name="TabIndex">10</Property>
       <Event name="SelectedIndexChanged">comboboxJDE_SelectedIndexChanged</Event>
     </Object>
     <Object type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="labelJDEdwardsRequired" children="Controls">
@@ -1121,7 +1121,7 @@ gg==</Preview>
       <Property name="Location">841, 69</Property>
       <Property name="Name">comboboxEmployeeType</Property>
       <Property name="Size">209, 21</Property>
-      <Property name="TabIndex">9</Property>
+      <Property name="TabIndex">8</Property>
     </Object>
     <Object type="System.Windows.Forms.StatusBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="statusbar" children="Controls">
       <Property name="Location">0, 536</Property>
@@ -1136,19 +1136,21 @@ gg==</Preview>
       <Property name="Size">113, 26</Property>
       <Property name="TabIndex">29</Property>
       <Property name="Text">Increment?</Property>
+      <Event name="Click">labelIncrement_Click</Event>
     </Object>
     <Object type="System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="textboxIncrement" children="Controls">
       <Property name="Location">131, 209</Property>
       <Property name="Name">textboxIncrement</Property>
       <Property name="Size">52, 20</Property>
-      <Property name="TabIndex">4</Property>
+      <Property name="TabIndex">3</Property>
+      <Event name="TextChanged">textboxIncrement_TextChanged</Event>
     </Object>
     <Object type="System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="buttonExitProgram" children="Controls">
       <Property name="DialogResult">Cancel</Property>
       <Property name="Location">865, 432</Property>
       <Property name="Name">buttonExitProgram</Property>
       <Property name="Size">212, 105</Property>
-      <Property name="TabIndex">15</Property>
+      <Property name="TabIndex">13</Property>
       <Property name="Text">Exit Program</Property>
       <Property name="UseVisualStyleBackColor">True</Property>
       <Event name="Click">buttonExitProgram_Click</Event>
@@ -1157,7 +1159,8 @@ gg==</Preview>
       <Property name="Location">12, 357</Property>
       <Property name="Name">testboxSV</Property>
       <Property name="Size">171, 20</Property>
-      <Property name="TabIndex">7</Property>
+      <Property name="TabIndex">6</Property>
+      <Event name="TextChanged">testboxSV_TextChanged</Event>
     </Object>
     <Object type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="labelSupervisor" children="Controls">
       <Property name="Font">Microsoft Sans Serif, 15pt</Property>
@@ -1166,6 +1169,7 @@ gg==</Preview>
       <Property name="Size">171, 23</Property>
       <Property name="TabIndex">21</Property>
       <Property name="Text">Supervisor</Property>
+      <Event name="Click">labelSupervisor_Click</Event>
     </Object>
     <Object type="System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="picturebox1" children="Controls">
       <Property name="Image">
@@ -1720,13 +1724,14 @@ AElFTkSuQmCC</Binary>
       <Property name="Location">12, 307</Property>
       <Property name="Name">comboboxdept</Property>
       <Property name="Size">171, 21</Property>
-      <Property name="TabIndex">6</Property>
+      <Property name="TabIndex">5</Property>
+      <Event name="SelectedIndexChanged">comboboxdept_SelectedIndexChanged</Event>
     </Object>
     <Object type="System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="textboxJT" children="Controls">
       <Property name="Location">12, 258</Property>
       <Property name="Name">textboxJT</Property>
       <Property name="Size">171, 20</Property>
-      <Property name="TabIndex">5</Property>
+      <Property name="TabIndex">4</Property>
       <Event name="TextChanged">textboxJT_TextChanged</Event>
     </Object>
     <Object type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="labelJobTitle" children="Controls">
@@ -1736,12 +1741,13 @@ AElFTkSuQmCC</Binary>
       <Property name="Size">171, 23</Property>
       <Property name="TabIndex">16</Property>
       <Property name="Text">Job Title</Property>
+      <Event name="Click">labelJobTitle_Click</Event>
     </Object>
     <Object type="System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="buttonCreateAccounts" children="Controls">
       <Property name="Location">12, 432</Property>
       <Property name="Name">buttonCreateAccounts</Property>
       <Property name="Size">212, 105</Property>
-      <Property name="TabIndex">12</Property>
+      <Property name="TabIndex">11</Property>
       <Property name="Text">Create Accounts</Property>
       <Property name="UseVisualStyleBackColor">True</Property>
       <Event name="Click">buttonCreateAccounts_Click</Event>
@@ -1753,14 +1759,16 @@ AElFTkSuQmCC</Binary>
       <Property name="Size">171, 23</Property>
       <Property name="TabIndex">14</Property>
       <Property name="Text">Password</Property>
+      <Event name="Click">labelPassword_Click</Event>
     </Object>
     <Object type="System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="textboxPW" children="Controls">
       <Property name="Location">12, 406</Property>
       <Property name="Name">textboxPW</Property>
       <Property name="Size">171, 20</Property>
-      <Property name="TabIndex">8</Property>
+      <Property name="TabIndex">7</Property>
       <Property name="Text">Worksafe2017</Property>
       <Property name="UseSystemPasswordChar">True</Property>
+      <Event name="TextChanged">textboxPW_TextChanged</Event>
     </Object>
     <Object type="System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="labelDepartment" children="Controls">
       <Property name="Font">Microsoft Sans Serif, 15pt</Property>
@@ -1769,6 +1777,7 @@ AElFTkSuQmCC</Binary>
       <Property name="Size">171, 23</Property>
       <Property name="TabIndex">8</Property>
       <Property name="Text">Department</Property>
+      <Event name="Click">labelDepartment_Click</Event>
     </Object>
     <Object type="System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="textboxLN" children="Controls">
       <Property name="Location">12, 118</Property>
@@ -2372,10 +2381,9 @@ $buttonCreateAccounts_Click = {
 		Name = $fn + ' ' + $ln
 		GivenName = $fn
 		Surname = $ln
-		EmployeeNumber = $TextboxEN.Text
 		samAccountName = $un
 		userPrincipalName = $upn
-		EMailAddress = "$fn.$ln@smmpogo.com"
+		EMailAddress = "$fn + '.' + $ln@smmpogo.com"
 		HomeDrive = 'H:\'
 		DisplayName = $fn + ' ' + $ln
 		AccountPassword = $securestringpw
@@ -2389,7 +2397,18 @@ $buttonCreateAccounts_Click = {
 		City = 'Delta Junction'
 		State = 'AK'
 		PostalCode = '99737'
-		Path = $path		
+		Path = $path
+		C    = 'US'
+		Co   = 'USA'
+		CountryCode = '840'
+		msExchUsageLocation = 'US'
+		postOfficeBox = '145'
+		wwwHomePage = 'http://www.smmpogo.com'
+		
+		
+		
+		
+		
 	}
 	
 	## Create Properties Object Dependent on Employee, Temp, or Contractor
@@ -2440,17 +2459,8 @@ $buttonCreateAccounts_Click = {
 	
 	##Set MSOL Proxy Properties
 	Add-PSSnapin quest.activeroles.admanagement
-	Set-QADUser -Identity TMcTesterson -ObjectAttributes @{ 'proxyAddresses' = @{ Append = @("SMTP:$fn.$ln@smmpogo.com", "smtp:$upn") } }
-	
-	
-	#Set Misc Attributes
-	set-qaduser $un -objectAttributes @{ 'c' = "US" }
-	set-qaduser $un -objectAttributes @{ 'co' = "USA" }
-	set-qaduser $un -objectAttributes @{ 'countryCode' = '840' }
-	set-qaduser $un -objectAttributes @{ 'msExchUsageLocation' = "US" }
-	set-qaduser $un -objectAttributes @{ 'wwwHomePage' = "http://www.pogominealaska.com" }
-	set-qaduser $un -objectAttributes @{ 'postOfficeBox' = "145" }
-	
+	set-qaduser $un -objectAttributes @{ 'proxyAddresses' = "SMTP:$fn.$ln@smmpogo.com" }
+	set-qaduser $un -objectAttributes @{ 'proxyAddresses' = "smtp:$upn@smmpogo.com" }
 	##Set JDE Properties
 	If ($comboboxJDE.Text -eq 'Yes')
 	{
@@ -2577,11 +2587,6 @@ $linklabelApplicationDocumenta_LinkClicked=[System.Windows.Forms.LinkLabelLinkCl
 #Event Argument: $_ = [System.Windows.Forms.LinkLabelLinkClickedEventArgs]
 	#TODO: Place custom script here
 	(New-Object -Com Shell.Application).Open("http://confluence.smmpogo.loc:8090/x/HoCe")
-}
-
-$textboxJT_TextChanged={
-	#TODO: Place custom script here
-	
 }
 ]]></Code>
   <Mode>1</Mode>

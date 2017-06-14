@@ -207,12 +207,13 @@ $buttonOK_Click={
 	& 'C:\Program Files (x86)\Microsoft Office\Office15\Outlook.exe'
 	& 'C:\Users\ehendricks\AppData\Local\slack\slack.exe'
 	& 'C:\Program Files (x86)\ASG-Remote Desktop 2016\ASGRD.exe'
+	& 'C:\Program Files (x86)\Git\cmd\git-gui.exe''
 	& "PowerShell_ISE.exe"
-	start-Process 'http://confluence.smmpogo.loc:8090/'
+	start-Process Chrome.exe 'http://confluence.smmpogo.loc:8090/'
 	Return
 }
 ]]></Code>
-  <Mode>0</Mode>
+  <Mode>1</Mode>
   <Assemblies>
     <Assembly>mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
     <Assembly>System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
