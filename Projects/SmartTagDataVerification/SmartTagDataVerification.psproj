@@ -1,0 +1,10 @@
+﻿<Project>
+	<Version>2.0</Version>
+	<FileID>8b039335-d620-4a64-bee5-b02089f6ea38</FileID>
+	<Files>
+		<File Build="0">Startup.pss</File>
+	</Files>
+	<OpenFiles>
+		<File>Startup.pss</File>
+	</OpenFiles>
+</Project>

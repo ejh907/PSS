@@ -1,0 +1,166 @@
+﻿<File version="2.1">
+  <Code><![CDATA[#Define a Param block to use custom parameters in the project
+#Param ($CustomParameter)
+
+function Main {
+<#
+    .SYNOPSIS
+        The Main function starts the project application.
+    
+    .PARAMETER Commandline
+        $Commandline contains the complete argument string passed to the script packager executable.
+    
+    .NOTES
+        Use this function to initialize your script and to call GUI forms.
+		
+    .NOTES
+        To get the console output in the Packager (Forms Engine) use:
+		$ConsoleOutput (Type: System.Collections.ArrayList)
+#>
+	Param ([String]$Commandline)
+	
+	#--------------------------------------------------------------------------
+	#TODO: Add initialization script here (Load modules and check requirements)
+	
+	##Function Declare
+<#
+	.SYNOPSIS
+		Send message to Slack Channel Pogo Onsite
+	
+	.DESCRIPTION
+		A detailed description of the Send-SlackMessage function.
+	
+	.PARAMETER Message
+		A description of the Message parameter.
+	
+	.EXAMPLE
+				PS C:\> Send-SlackMessage -Message 'Value1'
+	
+	.NOTES
+		Additional information about the function.
+#>
+	function Send-SlackMessage
+	{
+		[CmdletBinding()]
+		param
+		(
+			[Parameter(Mandatory = $true)]
+			[String]$Message
+		)
+		
+		$hash = @{
+			'text'	 = "$Message"
+			'username' = 'Cthulu, Lord of Slack Messages'
+			'icon_url' = 'http://3.bp.blogspot.com/_n-W7KsVCRnU/Sw1VwgplbKI/AAAAAAAAA9s/tOOTBqMlAa4/s1600/CTHULHU%2B11x14.JPG'
+		}
+		
+		$JSON = $hash | convertto-json
+		
+		$Header = New-Object 'System.Collections.Generic.Dictionary[[String],[String]]'
+		$Header.add('content-type', 'application/json')
+		Try
+		{
+			Invoke-WebRequest -uri 'https://hooks.slack.com/services/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' -Method POST -Headers $Header -Body $JSON
+		}
+		
+		Catch
+		{
+			[System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms')
+			[Windows.Forms.MessageBox]::Show('Faaaailleed', 'Test', [Windows.Forms.MessageBoxButtons]::OK, [Windows.Forms.MessageBoxIcon]::Information)
+		}
+		
+	}
+	
+	
+	
+	
+	$Date = Get-Date
+	$ConnectionString = 'server=pgosqlp03;database=SmartTag;trusted_connection=true;'
+	
+	##Date Check
+	$SqlConnection = New-Object System.Data.SqlClient.SqlConnection
+	$SqlConnection.ConnectionString = $ConnectionString
+	
+	$SqlCmd = New-Object System.Data.SqlClient.SqlCommand
+	$sqlcmd.CommandText = 'SELECT TOP 1 TagID,DetectionID,DetectionTime,EventID FROM SmartTag.dbo.DetectedTags ORDER BY DetectionTime DESC'
+	$sqlcmd.Connection = $SqlConnection
+	$SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
+	$SqlAdapter.SelectCommand = $SqlCmd
+	$DataSet = New-Object System.Data.DataSet
+	$SqlAdapter.Fill($DataSet)
+	$SqlConnection.Close()
+	
+	
+	$DateData = foreach ($Row in $dataset.Tables[0].Rows)
+	{
+		"$($Row.DetectionTime)"
+	}
+	
+	If ($DateData -gt $Date.AddDays(-2)) { }
+	Else
+	{
+		Send-MailMessage -From Powershell@smmpogo.com -Subject 'Tag Detection Problem' -To Helpdesk@smmpogo.com -Body "No tags have been detected for the last 72 hours.  Last tag was detected on $DateData" -Priority High -SmtpServer smtp.smmpogo.loc
+		Send-SlackMessage -Message "No tags have been detected for the last 72 hours.  Last tag was detected on $DateData"
+	}
+	
+	
+	##Detector Check
+	
+	
+	$SqlConnection = New-Object System.Data.SqlClient.SqlConnection
+	$SqlConnection.ConnectionString = $ConnectionString
+	
+	$SqlCmd = New-Object System.Data.SqlClient.SqlCommand
+	$sqlcmd.CommandText = 'SELECT TOP 25 TagID,DetectionID,DetectionTime,EventID FROM SmartTag.dbo.DetectedTags ORDER BY DetectionTime DESC'
+	$sqlcmd.Connection = $SqlConnection
+	$SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
+	$SqlAdapter.SelectCommand = $SqlCmd
+	$DataSet = New-Object System.Data.DataSet
+	$SqlAdapter.Fill($DataSet)
+	$SqlConnection.Close()
+	
+	
+	$DetectorData = foreach ($Row in $dataset.Tables[0].Rows)
+	{ $($Row.DetectionID) }
+	
+	If ($DetectorData -contains '1') { }
+	Else
+	{
+		Send-MailMessage -From Powershell@smmpogo.com -Subject 'Tag Detection Problem' -To Helpdesk@smmpogo.com -Body 'Detection Data Error.  No recent data from CV02' -Priority High -SmtpServer smtp.smmpogo.loc
+		Send-SlackMessage -Message 'Detection Data Error.  No recent data from CV02'
+	}
+	
+	
+	
+	
+	
+	
+	If ($DetectorData -contains '2') { }
+	Else
+	{
+		Send-MailMessage -From Powershell@smmpogo.com -Subject 'Tag Detection Problem' -To Helpdesk@smmpogo.com -Body 'Detection Data Error.  No recent data from CV04' -Priority High -SmtpServer smtp.smmpogo.loc
+		Send-SlackMessage -Message 'Detection Data Error.  No recent data from CV04'
+	}
+	
+	
+	#--------------------------------------------------------------------------
+	
+	
+	
+	$script:ExitCode = 0 #Set the exit code for the Packager
+}
+
+
+
+]]></Code>
+  <Assemblies>
+    <Assembly>mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <Assembly>System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.DirectoryServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+  </Assemblies>
+</File>
