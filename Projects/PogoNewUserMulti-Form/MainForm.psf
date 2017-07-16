@@ -2440,7 +2440,7 @@ $buttonCreateAccounts_Click = {
 	
 	##Set MSOL Proxy Properties
 	Add-PSSnapin quest.activeroles.admanagement
-	Set-QADUser -Identity TMcTesterson -ObjectAttributes @{ 'proxyAddresses' = @{ Append = @("SMTP:$fn.$ln@smmpogo.com", "smtp:$upn") } }
+	Set-QADUser -Identity $un -ObjectAttributes @{ 'proxyAddresses' = @{ Append = @("SMTP:$fn.$ln@smmpogo.com", "smtp:$upn") } }
 	
 	
 	#Set Misc Attributes
@@ -2492,7 +2492,8 @@ $buttonCreateAccounts_Click = {
 	
 	## Dirsync with O365
 	## Start DirSync
-	Invoke-Command -ComputerName "pgoadsp01" -ScriptBlock {C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -psconsolefile "C:\Program Files\Windows Azure Active Directory Sync\DirSyncConfigShell.psc1" -command "Start-OnlineCoexistenceSync"}
+#	Invoke-Command -ComputerName "pgoadsp01" -ScriptBlock { C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -psconsolefile "C:\Program Files\Windows Azure Active Directory Sync\DirSyncConfigShell.psc1" -command "Start-OnlineCoexistenceSync" }
+	Invoke-Command -ComputerName "pgoadsp02" -ScriptBlock { Start-ADSyncSyncCycle -PolicyType Delta }
 	#Connect-MSOLService
 	while (!$MSOLUserTest)
 	{

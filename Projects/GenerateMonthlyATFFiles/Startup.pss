@@ -1,0 +1,51 @@
+﻿<File version="2.1">
+  <Code><![CDATA[#Define a Param block to use custom parameters in the project
+#Param ($CustomParameter)
+
+function Main {
+<#
+    .SYNOPSIS
+        The Main function starts the project application.
+    
+    .PARAMETER Commandline
+        $Commandline contains the complete argument string passed to the script packager executable.
+    
+    .NOTES
+        Use this function to initialize your script and to call GUI forms.
+		
+    .NOTES
+        To get the console output in the Packager (Forms Engine) use:
+		$ConsoleOutput (Type: System.Collections.ArrayList)
+#>
+	Param ([String]$Commandline)
+	
+	#--------------------------------------------------------------------------
+	#TODO: Add initialization script here (Load modules and check requirements)
+	$MonthYear = Get-Date -Format y
+	$Month = $MonthYear.Substring(0, $MonthYear.Length - 6)
+	$YearNumber = (Get-Date -Format d).Substring(0, 1)
+	$Dest = "G:\Mine\Private\ATF RECORDS\$YearNumber $MonthYear ATF Files 2017\"
+	Copy-Item 'G:\Mine\Private\ATF RECORDS\ATF Files 2017' "$Dest" -recurse
+	get-childItem -path $Dest | rename-item -newname { "$Month $($_.Name)" }
+	Return
+	#--------------------------------------------------------------------------
+	
+	
+	
+	$script:ExitCode = 0 #Set the exit code for the Packager
+}
+
+
+
+]]></Code>
+  <Assemblies>
+    <Assembly>mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <Assembly>System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</Assembly>
+    <Assembly>System.DirectoryServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+  </Assemblies>
+</File>
